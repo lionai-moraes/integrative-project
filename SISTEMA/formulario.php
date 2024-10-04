@@ -2,21 +2,6 @@
 
 if(isset($_POST['submit']))
 {
-    // print_r($_POST['nome']);
-    // print_r('<br>');
-    // print_r($_POST['email']);
-    // print_r('<br>');
-    // print_r($_POST['telefone']);
-    // print_r('<br>');
-    // print_r($_POST['genero']);
-    // print_r('<br>');
-    // print_r($_POST['data_nascimento']);
-    // print_r('<br>');
-    // print_r($_POST['cidade']);
-    // print_r('<br>');
-    // print_r($_POST['estado']);
-    // print_r('<br>');
-    // print_r($_POST['endereco']);
 
     include_once('config.php');
 
