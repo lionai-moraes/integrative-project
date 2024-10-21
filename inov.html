@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Online - Design Profissional</title>
+    <style>
+        /* Estilos Globais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header com Logo e Barra de Busca */
+        header {
+            background-color: #000000;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        .search-bar {
+            width: 50%;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #e64a19;
+        }
+
+        /* Menu de Navegação */
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff5722;
+        }
+
+        /* Banner de Destaque */
+        .banner {
+            background-color: #000000;
+            padding: 50px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .banner h1 {
+            font-size: 3rem;
+            color: #333;
+        }
+
+        .banner p {
+            font-size: 1.5rem;
+            color: #555;
+        }
+
+        /* Categorias */
+        .categories {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 0 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .category-card h3 {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* Produtos em Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-top: 10px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff5722;
+            margin: 10px 0;
+        }
+
+        .discount {
+            font-size: 1rem;
+            color: #d32f2f;
+        }
+
+        .card button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #e64a19;
+        }
+
+        .rating {
+            margin: 10px 0;
+        }
+
+        .star {
+            color: #ffcc00;
+            font-size: 1.2rem;
+        }
+
+        /* Filtros */
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            background-color: #f0f0f0;
+            margin-bottom: 20px;
+        }
+
+        .filters select, .filters input[type="search"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+
+
+        .section-title {
+        font-size: 2.5rem; /* Aumenta o tamanho da fonte */
+        color: #ff5722; /* Cor de destaque */
+        text-align: center; /* Centraliza o texto */
+        margin-bottom: 30px; /* Espaçamento inferior */
+        position: relative;
+    }
+
+    /* Barra decorativa abaixo do título */
+    .section-title::after {
+        content: '';
+        width: 80px; /* Largura da barra */
+        height: 4px; /* Altura da barra */
+        background-color: #ff5722; /* Mesma cor do texto */
+        position: absolute;
+        bottom: -10px; /* Posiciona a barra abaixo do texto */
+        left: 50%; /* Centraliza horizontalmente */
+        transform: translateX(-50%); /* Ajusta a centralização */
+    }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="images/logo.png" alt="Logo da Loja">
+        <div class="search-bar">
+            <input type="text" id="productSearch" placeholder="Buscar produtos...">
+            <button onclick="searchProduct()">Buscar</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#vendidos">Mais Vendidos</a></li>
+                <li><a href="#Novidades">Novidades</a></li>
+                <li><a href="contact.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <!-- Banner Principal -->
+        <div class="banner">
+            <h1>Ofertas Imperdíveis!</h1>
+            <p>Compre agora e aproveite os melhores preços!</p>
+        </div>
+
+        <!-- Produtos Mais Vendidos -->
+        <section class="section">
+            <h2 id="vendidos">Produtos Mais Vendidos</h2>
+            <div class="grid" id="productGrid">
+                <div class="card" data-name="Correia Raiada">
+                    <img src="images/products/1.png" alt="Produto 1">
+                    <h3>Correia Raiada</h3>
+                    <div style="position: relative; top: -20px;" class="rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span> (4.0)
+                    </div>
+                    <a href="correia.html">
+                        <button style="position: relative; top: -20px;">Confira</button>
+                    </a>
+                </div>
+                <div class="card" data-name="Lâmpada H4 12V">
+                    <img src="images/products/2.png" alt="Produto 2">
+                    <h3>Lâmpada H4 12V</h3>
+                    <div style="position: relative; top: -20px;" class="rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span> (5.0)
+                    </div>
+                    <a href="lampada.html">
+                        <button style="position: relative; top: -20px;">Confira</button>
+                    </a>
+                </div>
+                <div class="card" data-name="Disco de freio">
+                    <img src="images/products/3.png" alt="Produto 3">
+                    <h3>Disco de freio</h3>
+                    <div style="position: relative; top: -20px;" class="rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span> (5.0)
+                    </div>
+                    <a href="disco.html">
+                        <button style="position: relative; top: -20px;">Confira</button>
+                    </a>
+                </div>
+                <div class="card" data-name="Bateria Moura 60Ah">
+                    <img src="images/products/4.png" alt="Produto 4">
+                    <h3>Bateria Moura 60Ah</h3>
+                    <div style="position: relative; top: -20px;" class="rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span> (5.0)
+                    </div>
+                    <a href="Moura.html">
+                        <button style="position: relative; top: -20px;">Confira</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title" id="Novidades">Novidades</h2>
+            <div class="grid" id="productGrid">
+                <div class="card" data-name="Óleo de Motor Radnaq 20W50">
+                    <img src="images/products/5.png" alt="Produto 1">
+                    <h3>Óleo de Motor Radnaq 20W50</h3>
+                    <div style="position: relative; top: -20px;" class="rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span> (4.0)
+                    </div>
+                    <a href="oleo.html">
+                        <button style="position: relative; top: -20px;">Confira</button>
+                    </a>
+                </div>
+                <div class="card" data-name="SYL1189">
+                    <img src="images/products/6.png" alt="Produto 2">
+                    <h3>SYL1189 <span style="visibility: hidden;">oiissoéumlionailio000000000texte </span></h3>
+                    <div style="position: relative; top: -20px;" class="rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span> (5.0)
+                    </div>
+                    <a href="SY.html">
+                        <button style="position: relative; top: -20px;">Confira</button>
+                    </a>
+                </div>
+                <div class="card" data-name="Kit Rolamento Roda Traseira">
+                    <img src="images/products/7.png" alt="Produto 3">
+                    <h3>Kit Rolamento Roda Traseira</h3>
+                    <div style="position: relative; top: -20px;" class="rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span> (5.0)
+                    </div>
+                    <a href="roda.html">
+                        <button style="position: relative; top: -20px;">Confira</button>
+                    </a>
+                </div>
+                <div class="card" data-name="Bateria Pioneiro 60Ah">
+                    <img src="images/products/08.png" alt="Produto 4">
+                    <h3>Bateria Pioneiro 60Ah <span style="visibility: hidden;">oiissoéumlionailiotexte </span></h3>
+                    <div style="position: relative; top: -20px;" class="rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span> (5.0)
+                    </div>
+                    <a href="pioneiro.html">
+                        <button style="position: relative; top: -20px;">Confira</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+
+    <script>
+        function searchProduct() {
+            const searchInput = document.getElementById('productSearch').value.toLowerCase();
+            const products = document.querySelectorAll('.card');
+
+            products.forEach(product => {
+                const productName = product.getAttribute('data-name').toLowerCase();
+                if (productName.includes(searchInput)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
